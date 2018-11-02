@@ -11,6 +11,7 @@ class Person {
 		this.age = age;
 	}
 
+
 	public String getNom()
 	{
 		return nom;

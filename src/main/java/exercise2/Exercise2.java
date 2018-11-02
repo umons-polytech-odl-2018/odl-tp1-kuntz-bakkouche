@@ -2,35 +2,63 @@ package exercise2;
 
 public class Exercise2 {
 
-	// Ajoutez un champ age à chaque instance de la classe Person.
-	// Créez-y une méthode statique "computePopulationSize" pour retourner la taille de la population.
-	// Créez-y une méthode statique "computeAveragePopulationAge" pour calculer l'âge moyen de la population.
-	// Implémentez-y une méthode statique "resetPopulation" pour remettre les compteurs à zéro.
-
 	static Person createPerson(String nom, int age) {
 
-		Person tmp = new Person(nom,age);
+		return new Person(nom,age);
+	}
 
-		// Ajoutez les champs name et age à la classe Person.
-		// Créez un constructeur public permettant d'initialiser ces valeurs au moment de la construction.
-		// Créez des getters publics pour lire ces valeurs une fois la classe construite.
+	static int computePopulationSize(Person[] tab) {
+
+		int tmp = 0;
+
+		for(Person element : tab)
+		{
+			if(element != null)
+				tmp++;
+		}
+
 		return tmp;
 	}
 
-	static int computePopulationSize() {
-		// TODO remove comment when implemented
-		// return Person.computePopulationSize();
-		return 0;
+	static float computeAveragePopulationAge(Person[] tab) {
+
+		float tmp = 0;
+
+		for(Person element : tab)
+		{
+			if(element != null)
+				tmp += element.getAge();
+		}
+		tmp = tmp/computePopulationSize(tab);
+
+		return tmp;
 	}
 
-	static float computeAveragePopulationAge() {
-		// TODO remove comment when implemented
-		// return Person.computeAveragePopulationAge();
-		return 0.0F;
+	static void resetPopulation(Person[] tab) {
+
+		tab = null;
+		tab = new Person[100];
 	}
 
-	static void resetPopulation() {
-		// TODO remove comment when implemented
-		// Person.resetPopulation();
+
+
+	public static void main(String[] args) {
+
+		Person[] tab = new Person[100];
+
+		for(int i = 0;i<10;i++)
+			tab[i] = createPerson("Berndard", i);
+
+		System.out.println(computePopulationSize(tab));
+		System.out.println(computeAveragePopulationAge(tab));
+
+		resetPopulation(tab);
+
+		for(Person element : tab)
+		{
+			if(element != null)
+				System.out.print(element.getAge());
+		}
 	}
 }
+
